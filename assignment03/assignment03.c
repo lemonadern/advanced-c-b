@@ -96,20 +96,24 @@ int main() {
 // functions
 void push(int data)
 {
+    // Stackが満杯ならエラー
     if( sp >= STACK_SIZE-1 ) {
         printf("Error: Stack FULL\n");
         return;
     }
+    // 更新してからpush
     stack[++sp] = data;
     return;
 }
 
 int pop()
 {
+    // Stackが空ならエラー
     if(sp < 0) {
         printf("Error: Stack EMPTY\n");
         return -1;
     }
+    // popしてから更新
     return stack[sp--];
 }
 
@@ -121,7 +125,8 @@ void initialize()
 void display()
 {
     for (int i = STACK_SIZE - 1; i >= 0;i--)
-    {                
+    {            
+        // spのときだけSP->と表示    
         if (i == sp) 
             printf("SP->");
         else
@@ -133,5 +138,6 @@ void display()
 
 // parse int to char
 int parse_int(char c) {
+    // asciiでの'0'との差分をとる
     return c - '0';
 }
